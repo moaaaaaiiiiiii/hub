@@ -1,68 +1,52 @@
 <!DOCTYPE html>
+<html>
+<head>
+	<title>#blocked</title>
+</head>
+<body>
+  <div id="container" style="text-align:center;">
+    <h1>Enter the URL:</h1>
+    <h2>Note that cloudflare sights do not work</h2>
+	
+    <input type="text" id="urlInput">
+	  
+    <h1>Enter the Title:</h1>
+	  
+    <input type="text" id="titleInput">
+	  
+    <button onclick="OpenBlank()">Submit</button>
+	  
+  </div>
+	
+  <script>
+    function openBlank() {
+	    
+    var url = document.getElementById("urlInput").value;
+    var title = document.getElementById("titleInput").value;
+	    
+    const win = window.open(void 0, "_blank", "");
 
-<html lang="en">
+	if (win == null) {
 
-	<head>
+		document.body.innerHTML = "Error: Popup windows are blocked by your browser. Please allow popups and click here to retry.";
 
-		<meta charset="utf-8" />
+		return;
 
-		<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
+	}
 
-		<meta http-equiv="Referrer-Policy" content="no-referrer" />
-
-		<meta name="referrer" content="no-referrer" />
-
-		<meta name="viewport" content="width=device-width,initial-scale=1" />
-
-		<link rel="icon" type="image/x-icon" href="https://www.google.com/favicon.ico" />
-
-		<link rel="stylesheet" type="text/css" href="data:text/css;base64,Ym9keSwgZW1iZWQsIGlmcmFtZSB7Cglwb3NpdGlvbjogYWJzb2x1dGU7CglkaXNwbGF5OiBibG9jazsKCXdpZHRoOiAxMDAlOwoJaGVpZ2h0OiAxMDAlOwoJbWFyZ2luOiAwcHg7CglwYWRkaW5nOiAwcHg7Cglib3JkZXI6IG5vbmU7CglvdmVyZmxvdzogaGlkZGVuOwp9Cg==" />
-
-		<title>Exporting</title>
-
-	</head>
-
-	<body>
-
-		<div>Click here to continue</div>
-
-		<script type="text/javascript">"use strict";
-
-(() => {
-
-	document.onclick = () => {
-
-		const win = window.open(void 0, "_blank", "");
-
-		if (win == null) {
-
-			document.body.innerHTML = "Error: Popup windows are blocked by your browser. Please allow popups and click here to retry.";
-
-			return;
-
-		}
-
-		win.focus();
+	win.focus();
 
 
 
-		const doc = win.document;
+	const doc = win.document;
 
-		doc.documentElement.replaceWith(document.documentElement);
+	doc.documentElement.replaceWith(document.documentElement); 
 
-		doc.body.innerHTML = "<embed type=\"text/plain\" width=\"1024\" height=\"768\" src=\"https://bing.com/\" />";
+	doc.body.innerHTML = "<embed type=\"text/plain\" width=\"1024\" height=\"768\" src=\"https://bing.com/\" />";
 
-		doc.title = "Bing";
-
-	};
-
-})();
-
-		</script>
-
-	</body>
-
+	doc.title = title;
+    }
+  </script>
+	
+</body>
 </html>
-
-<label for="fname">Display Title:</label>
-<input type="text" id="title" name="title"><br><br>
